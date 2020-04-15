@@ -104,74 +104,7 @@ tocbot.destroy();</code></pre>
                      <p>This is better than javascript solutions since it will work when javascript is disabled.</p>
                      <h2 id="api">API</h2>
                      <h3 id="options">Options</h3>
-                     <pre><code class="hljs"><span class="hljs-comment">// Where to render the table of contents.</span>
-<span class="hljs-attr">tocSelector</span>: <span class="hljs-string">'.js-toc'</span>,
-<span class="hljs-comment">// Where to grab the headings to build the table of contents.</span>
-<span class="hljs-attr">contentSelector</span>: <span class="hljs-string">'.js-toc-content'</span>,
-<span class="hljs-comment">// Which headings to grab inside of the contentSelector element.</span>
-<span class="hljs-attr">headingSelector</span>: <span class="hljs-string">'h1, h2, h3'</span>,
-<span class="hljs-comment">// Headings that match the ignoreSelector will be skipped.</span>
-<span class="hljs-attr">ignoreSelector</span>: <span class="hljs-string">'.js-toc-ignore'</span>,
-<span class="hljs-comment">// For headings inside relative or absolute positioned containers within content.</span>
-<span class="hljs-attr">hasInnerContainers</span>: <span class="hljs-literal">false</span>,
-<span class="hljs-comment">// Main class to add to links.</span>
-<span class="hljs-attr">linkClass</span>: <span class="hljs-string">'toc-link'</span>,
-<span class="hljs-comment">// Extra classes to add to links.</span>
-<span class="hljs-attr">extraLinkClasses</span>: <span class="hljs-string">''</span>,
-<span class="hljs-comment">// Class to add to active links,</span>
-<span class="hljs-comment">// the link corresponding to the top most heading on the page.</span>
-<span class="hljs-attr">activeLinkClass</span>: <span class="hljs-string">'is-active-link'</span>,
-<span class="hljs-comment">// Main class to add to lists.</span>
-<span class="hljs-attr">listClass</span>: <span class="hljs-string">'toc-list'</span>,
-<span class="hljs-comment">// Extra classes to add to lists.</span>
-<span class="hljs-attr">extraListClasses</span>: <span class="hljs-string">''</span>,
-<span class="hljs-comment">// Class that gets added when a list should be collapsed.</span>
-<span class="hljs-attr">isCollapsedClass</span>: <span class="hljs-string">'is-collapsed'</span>,
-<span class="hljs-comment">// Class that gets added when a list should be able</span>
-<span class="hljs-comment">// to be collapsed but isn't necessarily collapsed.</span>
-<span class="hljs-attr">collapsibleClass</span>: <span class="hljs-string">'is-collapsible'</span>,
-<span class="hljs-comment">// Class to add to list items.</span>
-<span class="hljs-attr">listItemClass</span>: <span class="hljs-string">'toc-list-item'</span>,
-<span class="hljs-comment">// How many heading levels should not be collapsed.</span>
-<span class="hljs-comment">// For example, number 6 will show everything since</span>
-<span class="hljs-comment">// there are only 6 heading levels and number 0 will collapse them all.</span>
-<span class="hljs-comment">// The sections that are hidden will open</span>
-<span class="hljs-comment">// and close as you scroll to headings within them.</span>
-<span class="hljs-attr">collapseDepth</span>: <span class="hljs-number">0</span>,
-<span class="hljs-comment">// Smooth scrolling enabled.</span>
-<span class="hljs-attr">scrollSmooth</span>: <span class="hljs-literal">true</span>,
-<span class="hljs-comment">// Smooth scroll duration.</span>
-<span class="hljs-attr">scrollSmoothDuration</span>: <span class="hljs-number">420</span>,
-<span class="hljs-comment">// Callback for scroll end.</span>
-<span class="hljs-attr">scrollEndCallback</span>: <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">e</span>) </span>{ },
-<span class="hljs-comment">// Headings offset between the headings and the top of the document (this is meant for minor adjustments).</span>
-<span class="hljs-attr">headingsOffset</span>: <span class="hljs-number">1</span>,
-<span class="hljs-comment">// Timeout between events firing to make sure it's</span>
-<span class="hljs-comment">// not too rapid (for performance reasons).</span>
-<span class="hljs-attr">throttleTimeout</span>: <span class="hljs-number">50</span>,
-<span class="hljs-comment">// Element to add the positionFixedClass to.</span>
-<span class="hljs-attr">positionFixedSelector</span>: <span class="hljs-literal">null</span>,
-<span class="hljs-comment">// Fixed position class to add to make sidebar fixed after scrolling</span>
-<span class="hljs-comment">// down past the fixedSidebarOffset.</span>
-<span class="hljs-attr">positionFixedClass</span>: <span class="hljs-string">'is-position-fixed'</span>,
-<span class="hljs-comment">// fixedSidebarOffset can be any number but by default is set</span>
-<span class="hljs-comment">// to auto which sets the fixedSidebarOffset to the sidebar</span>
-<span class="hljs-comment">// element's offsetTop from the top of the document on init.</span>
-<span class="hljs-attr">fixedSidebarOffset</span>: <span class="hljs-string">'auto'</span>,
-<span class="hljs-comment">// includeHtml can be set to true to include the HTML markup from the</span>
-<span class="hljs-comment">// heading node instead of just including the textContent.</span>
-<span class="hljs-attr">includeHtml</span>: <span class="hljs-literal">false</span>,
-<span class="hljs-comment">// onclick function to apply to all links in toc. will be called with</span>
-<span class="hljs-comment">// the event as the first parameter, and this can be used to stop,</span>
-<span class="hljs-comment">// propagation, prevent default or perform action</span>
-<span class="hljs-attr">onClick</span>: <span class="hljs-literal">false</span>,
-<span class="hljs-comment">// orderedList can be set to false to generate unordered lists (ul)</span>
-<span class="hljs-comment">// instead of ordered lists (ol)</span>
-<span class="hljs-attr">orderedList</span>: <span class="hljs-literal">true</span>,
-<span class="hljs-comment">// If there is a fixed article scroll container, set to calculate titles' offset</span>
-<span class="hljs-attr">scrollContainer</span>: <span class="hljs-literal">null</span>,
-<span class="hljs-comment">// prevent ToC DOM rendering if it's already rendered by an external system</span>
-<span class="hljs-attr">skipRendering</span>: <span class="hljs-literal">false</span>,
+                     <pre><code class="hljs">
 <span class="hljs-comment">// Optional callback to change heading labels.</span>
 <span class="hljs-comment">// For example it can be used to cut down and put ellipses on multiline headings you deem too long.</span>
 <span class="hljs-comment">// Called each time a heading is parsed. Expects a string in return, the modified label to display.</span>
